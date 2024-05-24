@@ -18,8 +18,8 @@ class VentanaPpal(QMainWindow):
         validator.setRegularExpression(regex)
         self.usuario.setValidator(QRegExpValidator(validator))
         self.clave.setValidator(QRegExpValidator(validator))
-        self.botonIngreso.accepted.connect(self.opcionAceptar)
-        self.botonIngreso.rejected.connect(self.opcionCancelar)
+        self.botonIngreso.accepted.connect(self.opcionIngresar)
+        self.botonIngreso.rejected.connect(self.opcionSalir)
     
     def setControlador(self,c):
         self.__miCoordinador = c
@@ -27,12 +27,13 @@ class VentanaPpal(QMainWindow):
     def recibir_info(self, u, c):
         self.__miCoordinador.recibir_info(u, c)
 
-    def opcionAceptar(self):
+    def opcionIngresar(self):
         u = self.usuario.text()
         c = self.clave.text()
+        return u, c 
         
-    def opcionCancelar(self):
-        self.hide()
+    def opcionSalir(self):
+        self.close()
 
         
 
