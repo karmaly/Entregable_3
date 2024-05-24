@@ -22,40 +22,23 @@ class VentanaPpal(QMainWindow):
         self.botonIngreso.rejected.connect(self.opcionSalir)
     
     def setControlador(self,c):
-        self.__miCoordinador = c
+        self.__miControlador = c
 
     def recibir_info(self, u, c):
-        self.__miCoordinador.recibir_info(u, c)
+        self.__miControlador.recibir_info(u, c)
 
     def opcionIngresar(self):
         u = self.usuario.text()
         c = self.clave.text()
-        return u, c 
+        return u, c
         
     def opcionSalir(self):
         self.close()
 
+class VentanaOpc(QDialog):
+    def __init__(self,ppal=None):
+        super().__init__(ppal)
+        loadUi("ventana_actualizar.ui",self)
+        self.__ventanaPadre=ppal
+        # self.setup()
         
-
-class VentanaAumentar(QDialog):
-    def __init__(self,ppal=None):
-        super().__init__(ppal)
-        loadUi("ventana_actualizar.ui",self)
-        self.__ventanaPadre=ppal
-        # self.setup()
-
-class VentanaDiminuir(QDialog):
-    def __init__(self,ppal=None):
-        super().__init__(ppal)
-        loadUi("ventana_actualizar.ui",self)
-        self.__ventanaPadre=ppal
-        # self.setup()
-
-class VentanaCantidad(QDialog):
-    def __init__(self,ppal=None):
-        super().__init__(ppal)
-        loadUi("ventana_mostrar.ui",self)
-        self.__ventanaPadre=ppal
-        # self.setup()
-
-
